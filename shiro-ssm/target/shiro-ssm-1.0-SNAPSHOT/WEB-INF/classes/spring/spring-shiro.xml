@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="realm"></property>
+    </bean>
+    <bean id="realm" class="com.qfedu.realm.MyUserRealm"></bean>
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"></property>
+        <property name="loginUrl" value="/login.html"></property>
+        <property name="filterChainDefinitions">
+            <value>
+                #shiro 对静态资源放行
+                /static/**=anon
+                #匿名访问  anon anonymous 匿名
+                /doLogin=anon
+                # 演示会话
+                /login.html=anon
+                #  退出
+                <!--/logout=logout-->
+                # 必须具有权限才能访问
+                <!--/user/** = perms["sys:user:*"]-->
+                <!--# 必须具有角色才能方法-->
+                <!--/admin/** = roles["管理员"]-->
+
+                # 勾选了记住我   记住我 的第三步
+                /** = user
+                # 必须登录后才能访问  Authentication  认证后才能访问
+                # 配置到最后
+                # /**=authc
+            </value>
+        </property>
+    </bean>
+</beans>
