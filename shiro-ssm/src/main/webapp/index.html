@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-2.1.0.js"></script>
+    <script>
+       function logout(){
+           $.ajax({
+               url:"/logout",
+               success:function(r){
+                   if(r.code===0){
+                       location.href="login.html";
+                   }
+               }
+           });
+       }
+    </script>
+</head>
+<body>
+
+    <!--welcome, <a href="/logout">退出</a>-->
+
+    <a href="javascript:" onclick="logout()">退出</a>
+
+</body>
+</html>

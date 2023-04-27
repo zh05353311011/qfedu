@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/my-parent/my-front/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="shiro-ssm" />
+        <module name="spring-MP" />
+        <module name="my-backend" />
+        <module name="shiro" />
+        <module name="shop-web" />
+        <module name="my-common" />
+        <module name="mp01" />
+        <module name="shop-service" />
+        <module name="shop-common" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="shiro-ssm" options="--add-exports=java.base/sun.security.pkcs=ALL-UNNAMED" />
+    </option>
+  </component>
+</project>
